@@ -208,15 +208,15 @@
     .skills-scroll-track {
       display: flex;
       gap: 25px;
-      animation: scroll-left 30s linear infinite;
+      animation: scroll-left 20s linear infinite;
     }
 
     @keyframes scroll-left {
       0% {
         transform: translateX(0%);
       }
-      100% {
-        transform: translateX(-50%);
+      75% {
+        transform: translateX(-20%);
       }
     }
 
@@ -225,7 +225,7 @@
       background-color: #1e1e1e;
       padding: 15px 10px;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.4);
+      box-shadow: 0 4px 12px rgba(181, 212, 5, 0.4);
       flex-shrink: 0;
       text-align: center;
       display: flex;
@@ -238,7 +238,7 @@
 
     .skill-item:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(28, 239, 255, 0.8);
+      box-shadow: 0 8px 20px rgba(255, 28, 28, 0.8);
     }
 
     .skill-item img {
@@ -246,7 +246,7 @@
       height: 50px;
       margin-bottom: 12px;
       object-fit: contain;
-      filter: drop-shadow(0 0 3px #00bfff88);
+      filter: drop-shadow(0 0 3px #ff000088);
     }
 
     /* Different colors for each skill name */
@@ -263,74 +263,99 @@
     .skill-html span { color: #E34F26; }        /* HTML Orange */
     .skill-css span { color: #1572B6; }         /* CSS Blue */
     .skill-tableau span { color: #FFB217; }     /* Tableau Yellow */
-    .skill-numpy span { color: #013243; }       /* NumPy Dark Blue */
-    .skill-pandas span { color: #150458; }      /* Pandas Purple */
-    .skill-matplotlib span { color: #11557C; }  /* Matplotlib Blue */
+    .skill-numpy span { color: #f03800; }       /* NumPy Dark Blue */
+    .skill-pandas span { color: #ff00f2; }      /* Pandas Purple */
+    .skill-matplotlib span { color: #03f803; }  /* Matplotlib Blue */
     .skill-seaborn span { color: #4A90E2; }     /* Seaborn Blue */
-    .skill-django span { color: #092E20; }      /* Django Dark Green */
+    .skill-django span { color: #12f8a0; }      /* Django Dark Green */
     .skill-mongodb span { color: #47A248; }     /* MongoDB Green */
-    .skill-mysql span { color: #00758F; }       /* MySQL Blue */
+    .skill-mysql span { color: #ff0b0b; }       /* MySQL Blue */
+    .skill-powerbi span { color: #34ff0b; }      
 
     .work-section {
-      margin-bottom: 30px;
-      background-color: #222;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0, 191, 255, 0.3);
-    }
-
-    .work-section h3 {
-      color: #9dff00;
-      margin-bottom: 20px;
-      text-align: center;
-      text-shadow: 0 0 8px #000000bb;
-      letter-spacing: 1px;
-    }
-
-    .projects-images {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .projects-images img {
-      width: 180px;
-      height: 120px;
-      border-radius: 12px;
-      object-fit: cover;
-      box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      cursor: pointer;
-    }
-
-    .projects-images img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(255, 165, 0, 0.7);
-    }
-    .project-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.project-link-btn {
-  margin-top: 10px;
-  background-color: #00bfff;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
-}
-
-.project-link-btn:hover {
-  background-color: #009acd;
-  box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
-}
+            margin-bottom: 30px;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 191, 255, 0.3);
+        }
+        
+        .work-section h3 {
+            color: #9dff00;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 8px #000000bb;
+            letter-spacing: 1px;
+        }
+        
+        .items-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #333, #444);
+            border: 2px solid #00bfff;
+            border-radius: 12px;
+            padding: 20px 30px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+        }
+        
+        .item-row:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.4);
+            border-color: #9dff00;
+        }
+        
+        .item-title {
+            color: #00bfff;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+            flex-grow: 1;
+        }
+        
+        .project-link-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00bfff, #009acd);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .project-link-btn:hover {
+            background: linear-gradient(135deg, #009acd, #007bb8);
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .cert-link-btn {
+            background: linear-gradient(135deg, #9dff00, #7acc00);
+            color: #111;
+        }
+        
+        .cert-link-btn:hover {
+            background: linear-gradient(135deg, #7acc00, #5a9900);
+            color: #111;
+        }
+        
+        .section-divider {
+            margin: 40px 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00bfff, transparent);
+        }
 
     form {
       max-width: 600px;
@@ -590,7 +615,7 @@
   <section id="home" class="hero">
     <div class="container">
       <h2>Hello, I'm Vignesh Mullangi</h2>
-      <p>A passionate developer/data analyst creating clean, functional digital solutions.</p>
+      <p>A passionate about data science,data analytics,machine learning and building real-world tech solutions.</p>
       <a href="https://drive.google.com/file/d/10YGpw7YHWo6i936tBuNWVqyEBflgcgh3/view?usp=drive_link" class="resume-button">Resume</a>
       
       <!-- Social Media Icons moved here -->
@@ -621,7 +646,7 @@
     <div class="container">
       <h2>About Me</h2>
       <p>
-        My name is Vignesh, and I am currently pursuing my B.Tech in Computer Science and Engineering with a specialization in Data Science at Pragati Engineering College. I am in my 3rd year, 3-2 semester.
+        My name is Vignesh, and I am currently pursuing my B.Tech in Computer Science and Engineering with a specialization in Data Science at Pragati Engineering College. I am in my 4th year, 4-1 semester.
       </p>
       <p>
         I am passionate about technology and always eager to learn and apply my skills to real-world problems. I have a strong foundation in programming, particularly in Python, and I am familiar with web development using HTML, CSS, Django, and databases like MySQL and MongoDB.
@@ -647,14 +672,15 @@
           <div class="skill-item skill-java"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><span>Java</span></div>
           <div class="skill-item skill-html"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"><span>HTML</span></div>
           <div class="skill-item skill-css"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"><span>CSS</span></div>
-          <div class="skill-item skill-tableau"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Tableau_Logo.png" alt="Tableau"><span>Tableau</span></div>
+          <div class="skill-item skill-tableau"><img src="https://logos-world.net/wp-content/uploads/2021/10/Tableau-Logo.png" alt="Tableau"><span>Tableau</span></div>
           <div class="skill-item skill-numpy"><img src="https://numpy.org/images/logo.svg" alt="NumPy"><span>NumPy</span></div>
           <div class="skill-item skill-pandas"><img src="https://pandas.pydata.org/static/img/pandas_mark.svg" alt="Pandas"><span>Pandas</span></div>
           <div class="skill-item skill-matplotlib"><img src="https://matplotlib.org/_static/images/logo2.svg" alt="Matplotlib"><span>Matplotlib</span></div>
           <div class="skill-item skill-seaborn"><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" alt="Seaborn"><span>Seaborn</span></div>
-          <div class="skill-item skill-django"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg" alt="Django"><span>Django</span></div>
-          <div class="skill-item skill-mongodb"><img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" alt="MongoDB"><span>MongoDB</span></div>
-          <div class="skill-item skill-mysql"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/MySQL_logo.svg" alt="MySQL"><span>MySQL</span></div>
+          <div class="skill-item skill-django"><img src="https://unpkg.com/devicon@2.14.0/icons/django/django-original.svg" alt="Django"><span>Django</span></div>
+          <div class="skill-item skill-mongodb"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"><span>MongoDB</span></div>
+          <div class="skill-item skill-mysql"><img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" alt="MySQL"><span>MySQL</span></div>
+          <div class="skill-item skill-powerbi"><img src="https://img.icons8.com/fluency/512/power-bi-2021.png" alt="PowerBI"><span>PowerBI</span></div>
 
           <!-- Repeat for seamless scrolling -->
           <div class="skill-item skill-python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><span>Python</span></div>
@@ -667,59 +693,65 @@
   </section>
 
 <section id="work">
-  <div class="container">
-    <h2>Work</h2>
-    <div class="work-section">
-      <h3>Projects</h3>
-      <div class="projects-images">
-        <div class="project-box">
-          <img src="https://via.placeholder.com/150?text=Project+1" alt="Project 1" />
-          <a href="https://github.com/vigneshmullangi/online-payment-fraud-detection" class="project-link-btn" target="_blank">View Project</a>
-        </div>
-        <div class="project-box">
-          <img src="https://via.placeholder.com/150?text=Project+2" alt="Project 2" />
-          <a href="https://github.com/vigneshmullangi/odi-cricket-stats" class="project-link-btn" target="_blank">View Project</a>
-        </div>
-        <div class="project-box">
-          <img src="https://via.placeholder.com/150?text=Project+3" alt="Project 3" />
-          <a href="https://example.com/project3" class="project-link-btn" target="_blank">View Project</a>
-        </div>
-      </div><br>
+        <div class="container">
+            <h2>Work</h2>
+            
+            <div class="work-section">
+                <h3>Projects</h3>
+                <div class="items-container">
+                    <div class="item-row">
+                        <div class="item-title">Online Payment Fraud Detection</div>
+                        <a href="https://github.com/vigneshmullangi/online-payment-fraud-detection" class="project-link-btn" target="_blank">View Project</a>
+                    </div>
+                    
+                    <div class="item-row">
+                        <div class="item-title">ODI Cricket Statistics</div>
+                        <a href="https://github.com/vigneshmullangi/odi-cricket-stats" class="project-link-btn" target="_blank">View Project</a>
+                    </div>
+                    
+                    <div class="item-row">
+                        <div class="item-title">Portfolio project</div>
+                        <a href="https://vigneshmullangi.github.io/portfolio/" class="project-link-btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="section-divider"></div>
+                
+                <h3>Certificates</h3>
+                <div class="items-container">
+                    <div class="item-row">
+                        <div class="item-title">ServiceNow CSA Certificate</div>
+                        <a href="https://drive.google.com/file/d/125DNbUA_VYLHEt817sCDlyY_rNGokUk9/view?usp=sharing" class="project-link-btn cert-link-btn" target="_blank">View Certificate</a>
+                    </div>
+                    
+                    <div class="item-row">
+                        <div class="item-title">ServiceNow CAD Certificate</div>
+                        <a href="https://drive.google.com/file/d/1WxZwzPg9lv2_dpTGciMFNrmSy-iN7L0O/view?usp=sharing" class="project-link-btn cert-link-btn" target="_blank">View Certificate</a>
+                    </div>
+                    
+                    <div class="item-row">
+                        <div class="item-title">Python for Data Science</div>
+                        <a href="https://drive.google.com/file/d/1Uw2pEoHKxS7Ki73NRH1i-DCWE6QSkfcP/view?usp=sharing" class="project-link-btn cert-link-btn" target="_blank">View Certificate</a>
+                    </div>
+                    
+                    <div class="item-row">
+                        <div class="item-title">Salesforce AI Associate</div>
+                        <a href="https://drive.google.com/file/d/1O9jlFNzWSQK0DiIhWUh3XAbWFb6sEgXE/view?usp=sharing" class="project-link-btn cert-link-btn" target="_blank">View Certificate</a>
+                    </div>
+                    
+                    <div class="item-row">
+                        <div class="item-title">Salesforce Developer Virtual Internship</div>
+                        <a href="https://drive.google.com/file/d/1OVj5XMy-2fa0YsT39sPzQgA6HjCZEArU/view?usp=sharing" class="project-link-btn cert-link-btn" target="_blank">View Certificate</a>
+                    </div>
 
-      <h3>Certificates</h3>
-      <div class="projects-images">
-        <div class="project-box">
-          <img src="C:\Users\Lenovo\Downloads\servicenow csa certificate.jpg" alt="Servicenow csa" />
-          <a href="https://drive.google.com/file/d/125DNbUA_VYLHEt817sCDlyY_rNGokUk9/view?usp=sharing" class="project-link-btn" target="_blank">View Certificate</a>
+                    <div class="item-row">
+                        <div class="item-title">SQL</div>
+                        <a href="https://drive.google.com/file/d/1OT_hMWkJa_vHHpFwMr5Z6vV2nL62xzUt/view?usp=sharing" class="project-link-btn cert-link-btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="project-box">
-          <img src="C:\Users\Lenovo\Downloads\servicenow csa certificate.jpg" alt="Servicenow cad" />
-          <a href="https://drive.google.com/file/d/1WxZwzPg9lv2_dpTGciMFNrmSy-iN7L0O/view?usp=sharing" class="project-link-btn" target="_blank">View Certificate</a>
-        </div>
-        <div class="project-box">
-          <img src="" alt="Python for Data Science" />
-          <a href="https://drive.google.com/file/d/1Uw2pEoHKxS7Ki73NRH1i-DCWE6QSkfcP/view?usp=sharing" class="project-link-btn" target="_blank">View Certificate</a>
-        </div>
-      </div>
-
-      <br>
-      <div class="projects-images">
-        <div class="project-box">
-          <img src="https://via.placeholder.com/150?text=Certificate+4" alt="Certificate 4" />
-          <a href="https://example.com/certificate4" class="project-link-btn" target="_blank">View Certificate</a>
-        </div>
-        <div class="project-box">
-          <img src="https://via.placeholder.com/150?text=Certificate+5" alt="Certificate 5" />
-          <a href="https://example.com/certificate5" class="project-link-btn" target="_blank">View Certificate</a>
-        </div>
-        <div class="project-box">
-          <img src="https://via.placeholder.com/150?text=Certificate+6" alt="Certificate 6" />
-          <a href="https://example.com/certificate6" class="project-link-btn" target="_blank">View Certificate</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
   <section id="contact">
     <div class="container">
