@@ -65,6 +65,58 @@
       color: #1cefff;
       text-shadow: 0 0 5px #1cefff;
     }
+    /* Hide checkbox */
+#menu-toggle {
+  display: none;
+}
+
+/* Hamburger icon */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-icon span {
+  background-color: #333;
+  height: 3px;
+  width: 25px;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Menu styles */
+.menu ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex;
+  }
+
+  .menu ul {
+    display: none;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 10px;
+  }
+
+  #menu-toggle:checked + .menu-icon + .menu ul {
+    display: flex;
+  }
+}
+
 
     .hero {
       background: linear-gradient(135deg, #283e51, #485563);
@@ -597,20 +649,33 @@
 </head>
 <body>
 
-  <header>
-    <div class="container nav-container">
-      <h1 style="color:#00bfff; font-weight: 700;">VM</h1>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header>
+  <div class="container nav-container">
+    <h1 style="color:#00bfff; font-weight: 700;">VM</h1>
+
+    <!-- Hidden checkbox for toggle -->
+    <input type="checkbox" id="menu-toggle" />
+
+    <!-- Hamburger icon -->
+    <label for="menu-toggle" class="menu-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <!-- Navigation menu -->
+    <nav class="menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
   <section id="home" class="hero">
     <div class="container">
@@ -759,7 +824,7 @@
       <form>
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="5" placeholder="Your Message" required>a</textarea>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
         <button type="submit">Send</button>
       </form>
     </div>
