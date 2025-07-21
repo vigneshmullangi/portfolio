@@ -667,6 +667,26 @@
         width: 20px;
         height: 20px;
       }
+
+      /* --- Work Section Mobile Adjustments --- */
+      .item-row {
+        flex-direction: column; /* Stack title and button vertically */
+        align-items: flex-start; /* Align items to the left within the stacked layout */
+        padding: 15px 20px; /* Adjust padding for smaller screens */
+      }
+
+      .item-title {
+        margin-bottom: 10px; /* Add space between title and button */
+        text-align: left; /* Ensure title is left-aligned */
+        width: 100%; /* Ensure title takes full width */
+      }
+
+      .project-link-btn,
+      .cert-link-btn {
+        width: 100%; /* Make buttons take full width */
+        text-align: center; /* Center the text within the button */
+        padding: 10px 15px; /* Adjust button padding */
+      }
     }
   </style>
 </head>
