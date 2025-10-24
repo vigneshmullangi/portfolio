@@ -1,2 +1,2 @@
 # portfolio
-link-- ("https://vigneshmullangi.github.io/portfolio/",link)
+[link](https://vigneshmullangi.github.io/portfolio/)
