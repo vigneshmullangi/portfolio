@@ -65,76 +65,137 @@
       color: #1cefff;
       text-shadow: 0 0 5px #1cefff;
     }
-    /* Hide the checkbox */
-#menu-toggle {
-  display: none;
-}
 
-/* Hamburger icon style */
-.menu-icon {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 999; /* Keep it clickable */
-}
+    #menu-toggle {
+      display: none;
+    }
 
-.menu-icon span {
-  background-color: #00bfff; /* Changed color to match theme */
-  height: 3px;
-  width: 25px;
-  margin: 4px 0;
-  transition: 0.4s;
-}
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1000;
+      position: relative;
+    }
 
-/* Default menu style */
-.menu ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+    .menu-icon span {
+      background-color: #00bfff;
+      height: 3px;
+      width: 28px;
+      margin: 4px 0;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      border-radius: 3px;
+      box-shadow: 0 0 5px rgba(0, 191, 255, 0.3);
+    }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .menu-icon {
-    display: flex;
-    /* Aligns to the right within its flex container (nav-container) */
-    margin-left: auto; 
-  }
+    .menu ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-  .menu {
-    position: absolute;
-    top: 60px; /* Adjust based on your header height */
-    right: 0;
-    width: 70%;
-    background-color: rgba(20, 20, 20, 0.95); /* Darker background for menu */
-    padding: 15px;
-    display: none;
-    z-index: 998;
-    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3); /* Add shadow for depth */
-    border-radius: 8px; /* Slightly rounded corners */
-  }
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: flex;
+        margin-left: auto; 
+      }
 
-  .menu ul {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-end; /* Align menu items to the right */
-  }
+      .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(30, 30, 40, 0.98));
+        backdrop-filter: blur(10px);
+        padding: 80px 30px 30px 30px;
+        display: flex;
+        z-index: 999;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        border-left: 2px solid rgba(0, 191, 255, 0.3);
+      }
 
-  .menu ul li a {
-      color: #00bfff; /* Ensure links are visible */
-  }
+      .menu ul {
+        flex-direction: column;
+        gap: 25px;
+        align-items: flex-start;
+        width: 100%;
+      }
 
-  /* Show menu when checkbox is checked */
-  #menu-toggle:checked ~ .menu {
-    display: flex; /* Use flex to maintain column layout for ul */
-    flex-direction: column; /* Ensure main menu container stays column */
-    align-items: flex-end; /* Align the menu itself to the right */
-  }
-}
+      .menu ul li {
+        width: 100%;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+      }
 
+      .menu ul li a {
+        color: #00bfff;
+        font-size: 1.3rem;
+        display: block;
+        padding: 12px 15px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .menu ul li a:hover {
+        background: rgba(0, 191, 255, 0.1);
+        border-left-color: #00bfff;
+        padding-left: 20px;
+      }
+
+      #menu-toggle:checked ~ .menu {
+        right: 0;
+      }
+
+      #menu-toggle:checked ~ .menu ul li {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      #menu-toggle:checked ~ .menu ul li:nth-child(1) { transition-delay: 0.1s; }
+      #menu-toggle:checked ~ .menu ul li:nth-child(2) { transition-delay: 0.2s; }
+      #menu-toggle:checked ~ .menu ul li:nth-child(3) { transition-delay: 0.3s; }
+      #menu-toggle:checked ~ .menu ul li:nth-child(4) { transition-delay: 0.4s; }
+      #menu-toggle:checked ~ .menu ul li:nth-child(5) { transition-delay: 0.5s; }
+
+      #menu-toggle:checked ~ .menu-icon span:nth-child(1) {
+        transform: rotate(45deg) translate(9px, 9px);
+      }
+
+      #menu-toggle:checked ~ .menu-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #menu-toggle:checked ~ .menu-icon span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
+
+      .menu::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+      }
+
+      #menu-toggle:checked ~ .menu::before {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
 
     .hero {
       background: linear-gradient(135deg, #283e51, #485563);
@@ -253,7 +314,6 @@
       text-shadow: 0 0 8px #00bfff88;
     }
 
-    /* About Section Text Styling */
     #about p {
       max-width: 900px;
       margin: auto;
@@ -266,7 +326,6 @@
       text-shadow: 0 0 3px #00000099;
     }
 
-    /* Skills Scroll Section */
     .skills-scroll {
       display: flex;
       overflow: hidden;
@@ -319,7 +378,6 @@
       filter: drop-shadow(0 0 3px #ff000088);
     }
 
-    /* Different colors for each skill name */
     .skill-item span {
       font-size: 1rem;
       font-weight: 600;
@@ -328,104 +386,104 @@
       transition: color 0.3s;
     }
 
-    .skill-python span { color: #3776AB; }       /* Python Blue */
-    .skill-java span { color: #f89820; }         /* Java Orange */
-    .skill-html span { color: #E34F26; }         /* HTML Orange */
-    .skill-css span { color: #1572B6; }          /* CSS Blue */
-    .skill-tableau span { color: #FFB217; }      /* Tableau Yellow */
-    .skill-numpy span { color: #f03800; }        /* NumPy Dark Blue */
-    .skill-pandas span { color: #ff00f2; }       /* Pandas Purple */
-    .skill-matplotlib span { color: #03f803; }   /* Matplotlib Blue */
-    .skill-seaborn span { color: #4A90E2; }      /* Seaborn Blue */
-    .skill-django span { color: #12f8a0; }       /* Django Dark Green */
-    .skill-mongodb span { color: #47A248; }      /* MongoDB Green */
-    .skill-mysql span { color: #ff0b0b; }        /* MySQL Blue */
-    .skill-powerbi span { color: #34ff0b; }      
+    .skill-python span { color: #3776AB; }
+    .skill-java span { color: #f89820; }
+    .skill-html span { color: #E34F26; }
+    .skill-css span { color: #1572B6; }
+    .skill-tableau span { color: #FFB217; }
+    .skill-numpy span { color: #f03800; }
+    .skill-pandas span { color: #ff00f2; }
+    .skill-matplotlib span { color: #03f803; }
+    .skill-seaborn span { color: #4A90E2; }
+    .skill-django span { color: #12f8a0; }
+    .skill-mongodb span { color: #47A248; }
+    .skill-mysql span { color: #ff0b0b; }
+    .skill-powerbi span { color: #34ff0b; }
 
     .work-section {
-                margin-bottom: 30px;
-                background-color: #222;
-                padding: 20px;
-                border-radius: 12px;
-                box-shadow: 0 6px 15px rgba(0, 191, 255, 0.3);
-            }
-            
-            .work-section h3 {
-                color: #9dff00;
-                margin-bottom: 20px;
-                text-align: center;
-                text-shadow: 0 0 8px #000000bb;
-                letter-spacing: 1px;
-            }
-            
-            .items-container {
-                max-width: 800px;
-                margin: 0 auto;
-            }
-            
-            .item-row {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background: linear-gradient(135deg, #333, #444);
-                border: 2px solid #00bfff;
-                border-radius: 12px;
-                padding: 20px 30px;
-                margin-bottom: 15px;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
-            }
-            
-            .item-row:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 8px 25px rgba(0, 191, 255, 0.4);
-                border-color: #9dff00;
-            }
-            
-            .item-title {
-                color: #00bfff;
-                font-size: 1.2em;
-                font-weight: bold;
-                text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
-                flex-grow: 1;
-            }
-            
-            .project-link-btn {
-                display: inline-block;
-                background: linear-gradient(135deg, #00bfff, #009acd);
-                color: white;
-                padding: 12px 25px;
-                border-radius: 8px;
-                text-decoration: none;
-                font-weight: 600;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
-                border: none;
-                cursor: pointer;
-                white-space: nowrap;
-            }
-            
-            .project-link-btn:hover {
-                background: linear-gradient(135deg, #009acd, #007bb8);
-                box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
-                transform: translateY(-2px);
-            }
-            
-            .cert-link-btn {
-                background: linear-gradient(135deg, #9dff00, #7acc00);
-                color: #111;
-            }
-            
-            .cert-link-btn:hover {
-                background: linear-gradient(135deg, #7acc00, #5a9900);
-                color: #111;
-            }
-            
-            .section-divider {
-                margin: 40px 0;
-                height: 2px;
-                background: linear-gradient(90deg, transparent, #00bfff, transparent);
-            }
+      margin-bottom: 30px;
+      background-color: #222;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 191, 255, 0.3);
+    }
+    
+    .work-section h3 {
+      color: #9dff00;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 0 0 8px #000000bb;
+      letter-spacing: 1px;
+    }
+    
+    .items-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #333, #444);
+      border: 2px solid #00bfff;
+      border-radius: 12px;
+      padding: 20px 30px;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+    }
+    
+    .item-row:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 191, 255, 0.4);
+      border-color: #9dff00;
+    }
+    
+    .item-title {
+      color: #00bfff;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+      flex-grow: 1;
+    }
+    
+    .project-link-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #00bfff, #009acd);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    
+    .project-link-btn:hover {
+      background: linear-gradient(135deg, #009acd, #007bb8);
+      box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+      transform: translateY(-2px);
+    }
+    
+    .cert-link-btn {
+      background: linear-gradient(135deg, #9dff00, #7acc00);
+      color: #111;
+    }
+    
+    .cert-link-btn:hover {
+      background: linear-gradient(135deg, #7acc00, #5a9900);
+      color: #111;
+    }
+    
+    .section-divider {
+      margin: 40px 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00bfff, transparent);
+    }
 
     form {
       max-width: 600px;
@@ -489,7 +547,6 @@
       box-shadow: 0 -4px 12px rgba(0, 191, 255, 0.2);
     }
 
-    /* Social Media Icons - Now in hero section */
     .social-icons {
       display: flex;
       justify-content: center;
@@ -599,16 +656,15 @@
       box-shadow: 0 6px 25px rgba(47, 141, 70, 0.5);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .nav-container {
-        flex-direction: row; /* Keep logo and icon on same row */
-        justify-content: space-between; /* Space them out */
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
       }
 
-      nav { /* Target the nav element directly */
-        width: 100%; /* Make nav take full width */
+      nav {
+        width: 100%;
       }
 
       nav ul {
@@ -668,24 +724,23 @@
         height: 20px;
       }
 
-      /* --- Work Section Mobile Adjustments --- */
       .item-row {
-        flex-direction: column; /* Stack title and button vertically */
-        align-items: flex-start; /* Align items to the left within the stacked layout */
-        padding: 15px 20px; /* Adjust padding for smaller screens */
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
       }
 
       .item-title {
-        margin-bottom: 10px; /* Add space between title and button */
-        text-align: left; /* Ensure title is left-aligned */
-        width: 100%; /* Ensure title takes full width */
+        margin-bottom: 10px;
+        text-align: left;
+        width: 100%;
       }
 
       .project-link-btn,
       .cert-link-btn {
-        width: 100%; /* Make buttons take full width */
-        text-align: center; /* Center the text within the button */
-        padding: 10px 15px; /* Adjust button padding */
+        width: 100%;
+        text-align: center;
+        padding: 10px 15px;
       }
     }
   </style>
@@ -715,8 +770,6 @@
     </nav>
   </div>
 </header>
-
-
 
   <section id="home" class="hero">
     <div class="container">
@@ -815,7 +868,7 @@
                     
                     <div class="item-row">
                         <div class="item-title">Global store Sales Dashboard</div>
-                        <a href="https://github.com/vigneshmullangi/Global-Super-Store-Sales-Dashboard" target="_blank">View Project</a>
+                        <a href="https://github.com/vigneshmullangi/Global-Super-Store-Sales-Dashboard" class="project-link-btn" target="_blank">View Project</a>
                     </div>
                 </div>
                 
@@ -868,14 +921,5 @@
       </form>
     </div>
   </section>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 Vignesh Mullangi. All rights reserved.</p>
-    </div>
-  </footer>
-
 </body>
 </html>
-
-
